@@ -1,6 +1,5 @@
 // Config local
-//var config = {"titulo":"Hopedia","autor":"Leo Merlo","server_url":"http:\/\/leomerlo.com.ar\/hopedia","tipos":["Golden","Scotch","Stout","Weiss","Pale Ale","IPA"],"etapas":[{"fecha":1,"nombre":"Cocinado"},{"fecha":7,"nombre":"Fermentacion"},{"fecha":14,"nombre":"Madurado"},{"nombre":"Envasada"}]};
-var config = {"titulo":"Hopedia","autor":"Leo Merlo","server_url":"http:\/\/localhost\/finales\/DM","tipos":["Golden","Scotch","Stout","Weiss","Pale Ale","IPA"],"etapas":[{"fecha":1,"nombre":"Cocinado"},{"fecha":7,"nombre":"Fermentacion"},{"fecha":14,"nombre":"Madurado"},{"nombre":"Envasada"}]};
+var config = {"titulo":"Hopedia","autor":"Leo Merlo","server_url":"http:\/\/leomerlo.com.ar\/hopedia","tipos":["Golden","Scotch","Stout","Weiss","Pale Ale","IPA"],"etapas":[{"fecha":1,"nombre":"Cocinado"},{"fecha":7,"nombre":"Fermentacion"},{"fecha":14,"nombre":"Madurado"},{"nombre":"Envasada"}]};
 
 // Creación del módulo
 angular.module('Hopedia', ['ngRoute','ngAnimate','mobile-angular-ui','slickCarousel'])
@@ -83,7 +82,7 @@ angular.module('Hopedia', ['ngRoute','ngAnimate','mobile-angular-ui','slickCarou
 	}
 	$scope.etapas = [];
 	$scope.tipos = [];
-	$scope.url = "http://localhost/finales/DM/server/";
+	$scope.url = "http://leomerlo.com/hopedia/server/";
 	$scope.init = false;
 
 	$http({
