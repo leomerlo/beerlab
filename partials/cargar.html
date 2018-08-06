@@ -1,0 +1,99 @@
+<div class="block block_large block_con_imagen">
+
+	<img src="images/nueva_receta.png" class="top_image" />
+
+	<h1>Nueva receta</h1>
+
+	<form name="carga_receta" novalidate ng-submit="agregar_receta()">
+		
+			<div class="carga_paso_1" ng-show="paso_activo == 1">
+				<h2>Informacion general <span>(1 de 3)</span></h2>
+				<div class="form-group">
+					<label>Nombre</label>
+					<input type="text" class="form-control" name="nombre" ng-model="receta.nombre" required />
+				</div>
+				<div class="form-group">
+					<label>Tipo</label>
+					<select name="tipo" class="form-control" required ng-model="receta.tipo">
+						<option value="{{$index + 1}}" ng-repeat="tipo in tipos">{{tipo}}</option>
+					</select>
+				</div>
+				<div class="form-group btn-control">
+					<a ng-disabled="!carga_receta.nombre.$valid && !carga_receta.tipo.$valid" ng-click="pasoAdelante(carga_receta.nombre.$valid && carga_receta.tipo.$valid)" class="btn btn-next">Siguiente</a>
+				</div>
+			</div>
+			<div class="carga_paso_2" ng-show="paso_activo == 2">
+				<h2>Sabores <span>(2 de 3)</span></h2>
+				<div class="form-group">
+					<label>Maltas</label>
+					<div class="malta-group" ng-repeat="malta in maltas" ng-init="class = ($index == maltas.length - 1 && $index != 0) ? 'tiene_eliminar' : ''">
+						<input type="text" class="form-control" name="malta_{{$index}}" ng-model="malta.value" required ng-class="class" />
+						<a ng-if="$index == maltas.length - 1 && $index != 0" class="btn" ng-click="quitar_malta()"><i class="fa fa-times" aria-hidden="true"></i></a>
+					</div>
+					<a ng-click="agregar_malta()" class="btn agregar_malta">Agregar malta <i class="fa fa-plus" aria-hidden="true"></i></a>
+				</div>
+				<div class="form-group">
+					<label>Lupulo Amargor</label>
+					<div>
+						<input type="text" class="form-control" name="{{campo.name}}" ng-model="receta.lupulo_amargor" required />
+					</div>
+				</div>
+				<div class="form-group">
+					<label>Lupulo Sabor</label>
+					<div>
+						<input type="text" class="form-control" name="{{campo.name}}" ng-model="receta.lupulo_sabor" required />
+					</div>
+				</div>
+				<div class="form-group btn-control">
+					<a ng-click="pasoAtras()" class="btn btn-prev">Atras</a>
+					<a ng-disabled="!carga_receta.$valid" ng-click="pasoAdelante(carga_receta.$valid)" class="btn btn-next">Siguiente</a>
+				</div>
+			</div>
+
+			<div class="carga_paso_3" ng-show="paso_activo == 3">
+				<h2>Cocción <span>(3 de 3)</span></h2>
+				<div class="form-group">
+					<label>Temperatura mascerado</label>
+					<div>
+						<input type="text" class="form-control" name="{{campo.name}}" ng-model="receta.temp_mascerado" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label>Densidad inicial</label>
+					<div>
+						<input type="text" class="form-control" name="{{campo.name}}" ng-model="receta.densidad_inicial" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label>Dennsidad final</label>
+					<div>
+						<input type="text" class="form-control" name="{{campo.name}}" ng-model="receta.densidad_final" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label>Levadura</label>
+					<div>
+						<input type="text" class="form-control" name="{{campo.name}}" ng-model="receta.levadura" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label>Clarificante hervido</label>
+					<div>
+						<input type="text" class="form-control" name="{{campo.name}}" ng-model="receta.clarificante_h" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label>Clarificante maduracion</label>
+					<div>
+						<input type="text" class="form-control" name="{{campo.name}}" ng-model="receta.clarificante_m" />
+					</div>
+				</div>
+				<div class="form-group btn-control">
+					<a ng-click="pasoAtras()" class="btn btn-prev">Atras</a>
+					<button ng-disabled="!carga_receta.$valid" type="submit" class="btn btn-next">Enviar</button>
+				</div>
+			</div>
+		
+	</form>
+</div>
+

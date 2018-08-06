@@ -1,0 +1,60 @@
+<div class="block block_large block_con_imagen block_detalle">
+	<img src="images/icono_cerveza.png" class="left_image" alt="Cerveza {{receta.nombre}}" />
+	<div ng-hide="receta.nombre" class="noInfo">No existe la receta que estas buscando.</div>
+	<div ng-show="receta.nombre">
+		<div class="info">
+			<h1 class="titulo">{{receta.nombre}}</h1>
+			<span class="tipo">{{receta.tipo_text}}</span>
+			<div>
+			<span class="estado">{{receta.etapa.nombre}} | <b>{{receta.fecha | dias}}</b></span>
+			</div>
+
+			<span>Fecha: {{receta.fecha | date: "dd/MM/yyyy"}}</span>
+		</div>
+		<div class="mas-info">
+			<ul>
+				<li class="maltas">
+					Maltas:
+					<ul>
+						<li ng-repeat="malta in receta.maltas">{{malta.value}}</li>
+					</ul>
+				</li>
+				<li>Lupulo amargor: {{receta.lupulo_amargor}}</li>
+				<li>Lupulo sabor: {{receta.lupulo_sabor}}</li>
+				<li ng-show="receta.temp_mascerado">Temp. mascerado: {{receta.temp_mascerado}}</li>
+				<li ng-show="receta.densidad_inicial">Densidad inicial: {{receta.densidad_inicial}}</li>
+				<li ng-show="receta.densidad_final">Densidad final: {{receta.densidad_final}}</li>
+				<li ng-show="receta.levadura">Levadura: {{receta.levadura}}</li>
+				<li ng-show="receta.clarificante_h">Clarificante hervido: {{receta.clarificante_h}}</li>
+				<li ng-show="receta.clarificante_m">Clarificante mascerado: {{receta.clarificante_m}}</li>
+			</ul>
+		</div>
+		<div class="bitacora">
+		
+			<div class="btn-wrapper">
+				<a class="btn" ng-click="$back()">Volver al listado</a>
+				<a class="btn" href="#/receta/{{receta.id}}/bitacora">Cargar Bitacora</a>
+			</div>
+
+			<h2>Bitacora</h2>
+			<div ng-hide="receta.pasos">
+				<ul>
+					<li>
+						<span>No existen pasos aún</span>
+					</li>
+				</ul>
+			</div>
+			<div ng-show="receta.pasos">
+				<ul>
+					<li ng-repeat="paso in receta.pasos">
+						<span class="hora">{{paso.hora}}</span>
+						<span class="nota">{{paso.nota}}</span>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="btn-wrapper">
+			<a class="btn btn-danger" ng-click="quitar_receta(receta.id)">Eliminar receta</a>
+		</div>
+	</div>
+</div>

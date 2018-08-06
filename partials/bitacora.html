@@ -1,0 +1,32 @@
+<div class="block block_large block_con_imagen">
+
+	<img src="images/nueva_receta.png" class="top_image" />
+
+	<h1>Receta: {{receta.nombre}}</h1>
+
+	<div class="btn-wrapper">
+		<a class="btn" ng-click="$back()">Volver a la receta</a>
+	</div>
+
+	<form name="receta_bitacora" novalidate ng-submit="agregar_bitacora()">
+		<div class="form-group bitacora-group" ng-repeat="nota in bitacora" ng-init="class = ($index == bitacora.length - 1 && $index != 0) ? 'tiene_eliminar' : ''">
+			<input type="text" class="form-control hora" name="nota_{{$index + pasosIndex}}" ng-model="nota.hora" required ng-class="class" />
+			<input type="text" class="form-control value" name="nota_{{$index + pasosIndex}}" ng-model="nota.nota" required ng-class="class" />
+			<a ng-if="$index == bitacora.length - 1 && $index != 0" class="btn" ng-click="quitar_nota()"><i class="fa fa-times" aria-hidden="true"></i></a>
+		</div>
+		<a ng-click="agregar_nota()" class="btn agregar_nota">Agregar paso <i class="fa fa-plus" aria-hidden="true"></i></a>
+		<div class="form-group btn-control">
+			<button ng-disabled="!receta_bitacora.$valid" type="submit" class="btn btn-next">Guardar</button>
+		</div>
+	</form>
+
+	<div class="bitacora">
+		<ul>
+			<li ng-repeat="paso in receta.pasos | orderBy: '-hora' track by $index" ng-click="quitar_bitacora(paso.id)">
+				<span class="hora">{{paso.hora}}</span>
+				<span class="nota">{{paso.nota}}</span>
+			</li>
+		</ul>
+	</div>
+</div>
+

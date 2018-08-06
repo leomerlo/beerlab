@@ -1,0 +1,28 @@
+<div ng-show="init == true && recetas.lista.length < 1">
+	<div class="block block_con_imagen sin_recetas">
+
+		<img src="images/sin-recetas.png" class="top_image" />
+
+		<h1>No hay cervezas cargadas todavía</h1>
+		<div class="btn-wrapper">
+			<a href="#/cargar" class="btn">Agrega tu primera receta</a>
+		</div>
+	</div>
+</div>
+<div ng-show="init == true && recetas.lista.length > 0">
+<div class="block block_lista block_con_imagen" ng-repeat="receta in recetas.lista track by receta.id" >
+	<a href="#/receta/{{receta.id}}/">
+		<img src="images/icono_cerveza.png" class="left_image" alt="Cerveza {{receta.nombre}}" />
+		<div class="info">
+			<span ng-if="receta.rate" class="rate">{{receta.rate}}</span>
+			<span class="titulo">{{receta.nombre}} {{receta.accion}}</span>
+			<span class="tipo">{{receta.tipo_text}}</span>
+			<div>
+			<span class="estado">{{receta.etapa.nombre}} | <b>{{receta.fecha | dias}}</b></span>
+			</div>
+
+			<span>Fecha: {{receta.fecha | date: "dd/MM/yyyy"}}</span>
+		</div>
+	</a>
+</div>
+</div>
