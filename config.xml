@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.leomerlo.hopedia" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+    <name>Hopedia</name>
+    <description>
+        Preparar tus propias cervezas y organizar las recetas es mas facil que nunca con Hopedia.
+    </description>
+    <author email="merloleandro@gmail.com" href="http://leomerlo.com">
+        Leandro Merlo
+    </author>
+    <content src="index.html" />
+    <preference name="DisallowOverscroll" value="true"/>
+    <preference name="android-minSdkVersion" value="14"/>
+
+    <plugin name="cordova-plugin-splashscreen" source="npm" spec="~3.2.1"/>
+    <plugin name="cordova-plugin-whitelist" source="npm" spec="~1.2.1"/>
+
+    <icon src ="icon.png"/>
+  	<splash src ="splash.png" />
+
+	<allow-navigation href="http://leomerlo.com/hopedia/*" />
+
+    <access origin="*" />
+
+</widget>
